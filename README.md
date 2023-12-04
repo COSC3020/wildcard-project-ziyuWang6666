@@ -29,3 +29,17 @@ The main steps are as follows:
 5. Use mkSet to initialize parent[] and rank[].
 
 6. Initialize the variable minCost to 0. Then, use a for loop to iterate over every pair of nodes and edge's parent information. If the parents of the source and destination are different, merge them using a union operation based on rank, and increase the corresponding weight. After the loop ends, return the total minCost.
+
+
+### time analysis
+
+The total worst-time complexity of the implementation could be $O(E\log{}E)$ or $O(E\log{}V)$.
+
+1. The mkSet function for loop edge.length to initilize parent and rank, the time complexity is $O(E)$, E is number of edges.
+
+2. The findParent method apply to find root of the sets and run it recursively. The worst-time complexity is $O(\log{}V)$, V is number of vertices.
+
+3. unionSet operation compare vertices result in time analysis $O(\log{}V)$, V is the number of vertices.
+
+4. The kruskalAlgo method to sort edges first take $O(E\log{}E)$, then mkSet, and for loop to find and unionSet when two vertices are not equal. So, the total complexity is $O(E\log{}E + E\log{}V)$. But, value E could be at most $O(V^2)$, so overall complexity could be $O(E\log{}E)$ or $O(E\log{}V)$.
+
