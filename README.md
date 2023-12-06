@@ -37,9 +37,9 @@ The total worst-time complexity of the implementation could be $O(E*\log{}V)$.
 
 1. The mkSet function for loop edge.length to initilize parent and rank, the time complexity is $O(E)$, E is number of edges.
 
-2. The findParent method apply to find root of the sets and run it recursively. The worst-time complexity is $O(\log{}V)$, V is number of vertices.
+2. The findParent method apply to find root of the node and run it recursively. The time complexity of traversing from a node to its root in such a tree is O(log V), where V is the number of elements in the disjoint set. Therefore, the worst-time complexity is O(logV).
 
-3. unionSet operation compare vertices result in time analysis $O(\log{}V)$, V is the number of vertices.
+3. unionSet operation compare ranks, if the ranks are different, the operation involves a constant number of assignments, making O(1). When the ranks are same, increment the node's rank and it will not be incremented again until its rank is part of a union operation where it merges with another node of the same rank which result in time analysis O(1).
 
 4. The kruskalAlgo method to sort edges first take $O(E*\log{}E)$, then mkSet, and for loop to find and unionSet when two vertices are not equal. So, the total complexity is $O(E*\log{}E + E*\log{}V)$. But, value E could be at most $O(V^2)$, so overall complexity could be $O(E*\log{}V)$.
 
