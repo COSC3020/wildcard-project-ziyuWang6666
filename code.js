@@ -9,12 +9,13 @@ function unionSet(u, v, parent, rank) {
     	let rootV = findParent(parent, v);
 
 	if(rank[rootU]<rank[rootV]) {
-		parent[rootU]=rootV;
+	    parent[rootU]=rootV;
 	} else if(rank[rootV]<rank[rootU]) {
-		parent[rootV]=rootU;
+	    parent[rootV]=rootU;
 	} else{
-		parent[rootV]=rootU; 
-		rank[rootU]++;//since the rank increases if the ranks of two sets are same 
+	    //since the rank increases if the ranks of two sets are same
+	    parent[rootV]=rootU; 
+	    rank[rootU]++; 
 	} 
 }
 
@@ -27,8 +28,8 @@ function kruskalAlgo(ajMatrix) {
         parent[i] = i;
         rank[i] = 0;
     }
-	let edges = [];
-	// Set to a edges list
+    let edges = [];
+    // Set to a edges list
     for (let i = 0; i < n; i++) {
         for (let j = i + 1; j < n; j++) {
             let wt = ajMatrix[i][j];//weight
@@ -37,18 +38,18 @@ function kruskalAlgo(ajMatrix) {
             }
         }
     }
-	edges.sort((a, b) => a.weight - b.weight);
+    edges.sort((a, b) => a.weight - b.weight);
 
-	let minCost=0;
-	for(let edge of edges) {
-		let {u, v, weight} = edge;
-		let v1=findParent(parent,u);
-		let v2=findParent(parent,v);
-		if(v1 !== v2) {
-			//if the parents are different that means they are in different sets so union them 
-			unionSet(v1,v2,parent,rank);
-			minCost+=weight;
-		}
+    let minCost=0;
+    for(let edge of edges) {
+	let {u, v, weight} = edge;
+	let v1=findParent(parent,u);
+	let v2=findParent(parent,v);
+	if(v1 !== v2) {
+		//if the parents are different that means they are in different sets so union them 
+		unionSet(v1,v2,parent,rank);
+		minCost+=weight;
 	}
-  	return minCost;
+    }
+    return minCost;
 }
