@@ -22,17 +22,18 @@ function unionSet(u, v, parent, rank) {
 function kruskalAlgo(ajMatrix) {
   let n = ajMatrix.length;
   if(n < 2) return 0;
-	let parent = new Array(n), rank = new Array(n);
+  let parent = new Array(n), rank = new Array(n);
 
-    for (let i = 0; i < n; i++) {
+  for (let i = 0; i < n; i++) {
         parent[i] = i;
         rank[i] = 0;
-    }
-    let edges = [];
-    // Set to a edges list
-    for (let i = 0; i < n; i++) {
+   }
+   let edges = [];
+   // Set to a edges list
+   for (let i = 0; i < n; i++) {
         for (let j = i + 1; j < n; j++) {
-            let wt = ajMatrix[i][j];//weight
+	    //weight
+            let wt = ajMatrix[i][j];
             if (wt !== 0) {
                 edges.push({ u: i, v: j, weight: wt });
             }
