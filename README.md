@@ -35,13 +35,13 @@ The main steps are as follows:
 
 The total worst-time complexity of the implementation could be $O(V^2)$, where V is the number of vertices.
 
-1. The findParent method is applied to find the root of the node and run it recursively. The time complexity of traversing from a node to its root in such a tree is $O(log V)$, where V is the number of elements in the disjoint set. Therefore, the worst time complexity is $O(logV)$.
+1. The findParent method is applied to find the root of the node and run it recursively. The time complexity of traversing from a node to its root in a list is $O(V)$, where V is the number of elements in the list. Therefore, the worst time complexity is $O(V)$.
 
 2. The unionSet operation takes the findParant operation first and then compares ranks. If the ranks are different, the operation involves a constant number of assignments, making $O(1)$. When the ranks are the same, increment the node's rank and it will not be incremented again until its rank is part of a union operation where it merges with another node of the same rank which results in time analysis O(1). The total unionSet operation takes $O(logV)$.
 
 3. The kruskalAlgo method to sort edges first takes $O(E*logE)$, 
 the first for loop runs n times, where n is the number of vertices in the matrix. The time complexity is $O(V)$. The second nested for loops i represents the row index, and j represents the column index. The time complexity is $O(V^2)$.
 
-4. The third for loop in the kruskalAlgo operation is find and unionSet when two vertices are not equal. So, the total complexity is $O(E*logE+V+V^2+logV)$. So overall complexity could be $O(V^2)$.
+4. The third for loop in the kruskalAlgo operation is find and unionSet when two vertices are not equal. So, the total complexity is $O(E*logE+2V+V^2+logV)$. So overall complexity could be $O(V^2)$.
 
 
